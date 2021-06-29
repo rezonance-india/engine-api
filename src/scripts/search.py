@@ -1,8 +1,11 @@
 import sqlite3
+from sqlite3 import dbapi2
 import sqlite_spellfix
+import os
+
 
 def search_tracks(param):
-    conn = sqlite3.connect("database/rezo.db")
+    conn = sqlite3.connect("src/database/rezo.db")
     conn.enable_load_extension(True)
     conn.load_extension(sqlite_spellfix.extension_path())
     cur = conn.cursor()
@@ -51,7 +54,7 @@ def search_tracks(param):
 
 
 def search_artists(param):
-        conn = sqlite3.connect("database/rezo.db")
+        conn = sqlite3.connect("src/database/rezo.db")
         cur = conn.cursor()
     
         cur.execute(
@@ -80,7 +83,7 @@ def search_artists(param):
 
 
 def search_albums(param):
-    conn = sqlite3.connect("database/rezo.db")
+    conn = sqlite3.connect("src/database/rezo.db")
     conn.enable_load_extension(True)
     conn.load_extension(sqlite_spellfix.extension_path())
     cur = conn.cursor()
