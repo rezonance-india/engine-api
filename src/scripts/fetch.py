@@ -1,8 +1,12 @@
 import sqlite3
+import os
 
 
 def artist_albums(artist_id: str):
-    conn = sqlite3.connect("src/database/rezo.db")
+    BASE_DIR = os.getcwd()
+    DB_DIR = "src/database/rezo.db"
+    DB_PATH = os.path.join(BASE_DIR, DB_DIR)
+    conn = sqlite3.connect(DB_PATH)
     cur = conn.cursor()
 
     SQL = """
@@ -33,7 +37,10 @@ def artist_albums(artist_id: str):
 
 
 def albums_tracks(album_id: str):
-    conn = sqlite3.connect("src/database/rezo.db")
+    BASE_DIR = os.getcwd()
+    DB_DIR = "src/database/rezo.db"
+    DB_PATH = os.path.join(BASE_DIR, DB_DIR)
+    conn = sqlite3.connect(DB_PATH)
     cur = conn.cursor()
 
     SQL = """

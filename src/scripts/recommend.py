@@ -1,6 +1,8 @@
 import sqlite3
 import numpy as np
 import random
+import os
+
 
 def get_recoms(query):
     genre = query[: 3]
@@ -25,7 +27,10 @@ def get_recoms(query):
 
 
 def recommend_pop(query):
-    conn = sqlite3.connect("src/database/rezo.db")
+    BASE_DIR = os.getcwd()
+    DB_DIR = "src/database/rezo.db"
+    DB_PATH = os.path.join(BASE_DIR, DB_DIR)
+    conn = sqlite3.connect(DB_PATH)
     cur = conn.cursor()
     item_list = []
     
@@ -95,7 +100,10 @@ def recommend_pop(query):
 
 
 def recommend_rap(query):
-    conn = sqlite3.connect("src/database/rezo.db")
+    BASE_DIR = os.getcwd()
+    DB_DIR = "src/database/rezo.db"
+    DB_PATH = os.path.join(BASE_DIR, DB_DIR)
+    conn = sqlite3.connect(DB_PATH)
     cur = conn.cursor()
     item_list = []
     
@@ -165,7 +173,10 @@ def recommend_rap(query):
     
 
 def recommend_edm(query):
-    conn = sqlite3.connect("src/database/rezo.db")
+    BASE_DIR = os.getcwd()
+    DB_DIR = "src/database/rezo.db"
+    DB_PATH = os.path.join(BASE_DIR, DB_DIR)
+    conn = sqlite3.connect(DB_PATH)
     cur = conn.cursor()
     item_list = []
     
@@ -270,7 +281,10 @@ def recommend_edm(query):
 
 
 def recommend_rock(query):
-    conn = sqlite3.connect("src/database/rezo.db")
+    BASE_DIR = os.getcwd()
+    DB_DIR = "src/database/rezo.db"
+    DB_PATH = os.path.join(BASE_DIR, DB_DIR)
+    conn = sqlite3.connect(DB_PATH)
     cur = conn.cursor()
     sim = np.load("src/database/roc-light.npy")
     recoms_list = sim[query, :]
@@ -339,8 +353,10 @@ def recommend_rock(query):
 
     
 def recommend_ind(query):
-    
-    conn = sqlite3.connect("src/database/rezo.db")
+    BASE_DIR = os.getcwd()
+    DB_DIR = "src/database/rezo.db"
+    DB_PATH = os.path.join(BASE_DIR, DB_DIR)
+    conn = sqlite3.connect(DB_PATH)
     cur = conn.cursor()
     item_list = []
     

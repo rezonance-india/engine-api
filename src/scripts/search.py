@@ -5,7 +5,10 @@ import os
 
 
 def search_tracks(param):
-    conn = sqlite3.connect("src/database/rezo.db")
+    BASE_DIR = os.getcwd()
+    DB_DIR = "src/database/rezo.db"
+    DB_PATH = os.path.join(BASE_DIR, DB_DIR)
+    conn = sqlite3.connect(DB_PATH)
     conn.enable_load_extension(True)
     conn.load_extension(sqlite_spellfix.extension_path())
     cur = conn.cursor()
@@ -54,36 +57,42 @@ def search_tracks(param):
 
 
 def search_artists(param):
-        conn = sqlite3.connect("src/database/rezo.db")
-        cur = conn.cursor()
-    
-        cur.execute(
-                """
-                SELECT * FROM artists
-                WHERE artist_name
-                LIKE ('%' || ? || '%')
-                ORDER BY artist_popularity DESC
-                LIMIT 50
-                """, (param, )
-                    )
-        
-        dict_list = []
-        query_result = cur.fetchall()
+    BASE_DIR = os.getcwd()
+    DB_DIR = "src/database/rezo.db"
+    DB_PATH = os.path.join(BASE_DIR, DB_DIR)
+    conn = sqlite3.connect(DB_PATH)
+    cur = conn.cursor()
 
-        for item in query_result:
-            item_dict = {
-                "artist_id": item[0],
-                "artist_name": item[1],
-                "artist_image": item[4],
-            }
-            dict_list.append(item_dict)
-        conn.close()
-        return dict_list
+    cur.execute(
+            """
+            SELECT * FROM artists
+            WHERE artist_name
+            LIKE ('%' || ? || '%')
+            ORDER BY artist_popularity DESC
+            LIMIT 50
+            """, (param, )
+                )
+    
+    dict_list = []
+    query_result = cur.fetchall()
+
+    for item in query_result:
+        item_dict = {
+            "artist_id": item[0],
+            "artist_name": item[1],
+            "artist_image": item[4],
+        }
+        dict_list.append(item_dict)
+    conn.close()
+    return dict_list
 
 
 
 def search_albums(param):
-    conn = sqlite3.connect("src/database/rezo.db")
+    BASE_DIR = os.getcwd()
+    DB_DIR = "src/database/rezo.db"
+    DB_PATH = os.path.join(BASE_DIR, DB_DIR)
+    conn = sqlite3.connect(DB_PATH)
     conn.enable_load_extension(True)
     conn.load_extension(sqlite_spellfix.extension_path())
     cur = conn.cursor()
