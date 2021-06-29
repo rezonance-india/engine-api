@@ -15,7 +15,7 @@ pydantic==1.8.2
 pyparsing==2.4.7
 pytest==6.2.4
 requests==2.25.1
-sqlite-spellfix==1.0
+# sqlite-spellfix==1.0
 starlette==0.14.2
 toml==0.10.2
 typing-extensions==3.10.0.0
