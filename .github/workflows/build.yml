@@ -15,6 +15,12 @@ jobs:
         uses: actions/setup-python@v2
         with:
           python-version: ${{ matrix.python-version }}
+
+      - name: Start Redis
+        uses: supercharge/redis-github-action@1.2.0
+        with:
+          redis-version: 6
+
       - name: Install Dependencies
         run: |
            python -m pip install pip --upgrade pip

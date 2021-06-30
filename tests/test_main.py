@@ -3,6 +3,7 @@ from fastapi.testclient import TestClient
 
 from main import app
 
+import redis
 import logging
 
 
@@ -86,3 +87,8 @@ def test_fetch_albums():
     response = client.post("/fetch/albums", json=data)
     assert response.status_code == 200
 
+def test_redis_server():
+
+    redis_client = redis.Redis(host='localhost', port=6379, db=0)
+    x = redis_client.ping()
+    assert x == True
