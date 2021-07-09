@@ -65,7 +65,7 @@ These are the features that we currently provide.
 
 :rocket: In app sharing 
 
-:arrow_downw: Unlimited downloads
+:arrow_down: Unlimited downloads
 
 :space_invader: Ad Free
 
