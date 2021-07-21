@@ -5,15 +5,25 @@ import redis
 import datetime
 import os
 
+def track_url_encoder(url_id: str, url_pin: str) -> str:
+    cdn_list = ['sdlhivkecdnems06', 'sklktecdnems03', 'sgdccdnems03']
+    cdn = cdn_list[0]
+    BITRATE = "160"
+    track_url = f"https://{cdn}.cdnsrv.jio.com/jiosaavn.cdn.jio.com/{url_pin}/{url_id}_{BITRATE}.mp4"
+
+    return track_url
+
 
 def search_tracks(param):
     redis_client = redis.Redis(host='localhost', port=6379, db=0)
     cached_data = redis_client.get(param)
     if cached_data is not None:
+        print("[REDIS] Cache hit")
         json_data = json.loads(cached_data)
         return json_data
 
     else:
+        print("[REDIS] Cache miss")
         BASE_DIR = os.getcwd()
         DB_DIR = "src/database/rezo.db"
         DB_PATH = os.path.join(BASE_DIR, DB_DIR)
@@ -32,7 +42,7 @@ def search_tracks(param):
         correctedquery += '*'
         cur.execute(
             """
-            SELECT ref_id, track_name, a.album_name, art.artist_name, t.track_url, a.album_img, t.track_id
+            SELECT ref_id, track_name, a.album_name, art.artist_name, t.url_id, cast(t.url_pin as text), a.album_img, t.track_id
             FROM tracks_fts4 t
             INNER JOIN albums a
             ON t.album_id = a.album_id
@@ -47,14 +57,17 @@ def search_tracks(param):
 
         dict_list = []
         for item in cur.fetchmany(50):
+            url_id = item[4]
+            url_pin = str(item[5])
+            track_url = track_url_encoder(url_id, url_pin)
             item_dict = {
                 "ref_id": item[0],
                 "track_name": item[1],
                 "album_name": item[2],
                 "artist_name": item[3],
-                "track_url": item[4],
-                "album_image": item[5],
-                "track_id": item[6]
+                "album_image": item[6],
+                "track_url": track_url,
+                "track_id": item[7]
             }
             dict_list.append(item_dict)
 
@@ -160,4 +173,5 @@ def search_albums(param):
         conn.close()
         redis_client.setex(param, datetime.timedelta(days=1), json.dumps(dict_list))
         return dict_list
+
 
