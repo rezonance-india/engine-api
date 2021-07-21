@@ -2,6 +2,14 @@ import sqlite3
 import os
 
 
+def track_url_encoder(url_id: str, url_pin: str) -> str:
+    cdn_list = ['sdlhivkecdnems06', 'sklktecdnems03', 'sgdccdnems03']
+    cdn = cdn_list[0]
+    BITRATE = "160"
+    track_url = f"https://{cdn}.cdnsrv.jio.com/jiosaavn.cdn.jio.com/{url_pin}/{url_id}_{BITRATE}.mp4"
+
+    return track_url
+
 def artist_albums(artist_id: str):
     BASE_DIR = os.getcwd()
     DB_DIR = "src/database/rezo.db"
@@ -51,18 +59,21 @@ def albums_tracks(album_id: str):
     cur.execute(SQL, (album_id, ))
 
     tracks = cur.fetchall()
+
     tracks_list = []
     for track in tracks:
+        url_id = track[5]
+        url_pin = track[6]
+        track_url = track_url_encoder(url_id, url_pin)
         track_dict ={
             "ref_id": track[0],
             "track_name": track[3],
             "track_id": track[2],
-            "track_url": track[5]
+            "track_url": track_url
         }
         tracks_list.append(track_dict)
 
     cur.close()
     conn.close()
     return tracks_list
-
 
