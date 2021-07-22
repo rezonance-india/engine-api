@@ -1,14 +1,18 @@
 import sqlite3
 import os
+from . import secret
+import secrets
 
 
 def track_url_encoder(url_id: str, url_pin: str) -> str:
-    cdn_list = ['sdlhivkecdnems06', 'sklktecdnems03', 'sgdccdnems03']
-    cdn = cdn_list[0]
+    cdn_list = secret.cdn_list
+    cdn = secrets.choice(cdn_list)
+    BASE_URL = secret.BASE_URL
     BITRATE = "160"
-    track_url = f"https://{cdn}.cdnsrv.jio.com/jiosaavn.cdn.jio.com/{url_pin}/{url_id}_{BITRATE}.mp4"
+    track_url = f"http://{cdn}.{BASE_URL}/{url_pin}/{url_id}_{BITRATE}.mp4"
 
     return track_url
+
 
 def artist_albums(artist_id: str):
     BASE_DIR = os.getcwd()

@@ -4,12 +4,16 @@ import json
 import redis
 import datetime
 import os
+import secrets
+from . import secret
+
 
 def track_url_encoder(url_id: str, url_pin: str) -> str:
-    cdn_list = ['sdlhivkecdnems06', 'sklktecdnems03', 'sgdccdnems03']
-    cdn = cdn_list[0]
+    cdn_list = secret.cdn_list
+    cdn = secrets.choice(cdn_list)
+    BASE_URL = secret.BASE_URL
     BITRATE = "160"
-    track_url = f"https://{cdn}.cdnsrv.jio.com/jiosaavn.cdn.jio.com/{url_pin}/{url_id}_{BITRATE}.mp4"
+    track_url = f"http://{cdn}.{BASE_URL}/{url_pin}/{url_id}_{BITRATE}.mp4"
 
     return track_url
 
@@ -18,12 +22,10 @@ def search_tracks(param):
     redis_client = redis.Redis(host='localhost', port=6379, db=0)
     cached_data = redis_client.get(param)
     if cached_data is not None:
-        print("[REDIS] Cache hit")
         json_data = json.loads(cached_data)
         return json_data
 
     else:
-        print("[REDIS] Cache miss")
         BASE_DIR = os.getcwd()
         DB_DIR = "src/database/rezo.db"
         DB_PATH = os.path.join(BASE_DIR, DB_DIR)
