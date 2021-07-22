@@ -32,7 +32,7 @@ jobs:
            rm database.zip
            cd ../..
            cd src/scripts/
-           curl -L -o secret.py {{ secrets.SECRET_URL }}
+           curl -L -o secret.py ${{ secrets.SECRET_URL }}
            cd ../..
            echo $(pwd)
            echo $(ls src/database/)
