@@ -1,20 +1,35 @@
 from logging import debug
-from fastapi import FastAPI
+from typing import Optional
+from fastapi import FastAPI, Header, Request
+from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel
 
 import re
 
-from scripts import search, recommend, fetch
+from scripts import search, recommend, fetch, trending
 
 
 app = FastAPI()
+
+
+origins = [
+    "http://localhost:8080",
+]
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=origins,
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
 
 
 class SearchResource(BaseModel):
     query: str
 
 @app.post('/search/tracks')
-def _search_tracks(request_body: SearchResource) -> list:
+def _search_tracks(request_body: SearchResource, request: Request) -> list:
     """search for tracks in database
 
     Args:
@@ -52,7 +67,7 @@ class RecommendResource(BaseModel):
 def _recommendaton(request_body: RecommendResource) -> list:
     ref_id = request_body.ref_id    
     results = recommend.get_recoms(ref_id)
-
+    
     return results
 
 
@@ -78,4 +93,8 @@ def _fetch_albums(request_body: FetchAlbums):
     return results
 
 
-
+@app.get('/trending/tracks')
+def _fetch_trending():
+    trending_tracks = trending.fetch_trending()
+    return trending_tracks
+    
