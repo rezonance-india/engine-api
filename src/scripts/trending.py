@@ -52,6 +52,3 @@ def fetch_trending():
         redis_client.setex('data', datetime.timedelta(days=1), json.dumps(result_list))
         return result_list
 
-
-
-print(fetch_trending)
