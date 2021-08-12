@@ -14,10 +14,8 @@ def fetch_trending():
         return json_data
 
     else:
-        res = requests.get("https://www.jiosaavn.com/featured/english_chartbusters/1HiqW,xnqZTfemJ68FuXsA__").text
+        res = requests.get("https://www.jiosaavn.com/featured/international_charts/DjLfyo0wfbk_").text
         id = res.split('"type":"playlist","id":"')[1].split('"')[0]
-
-
         res = requests.get(f"https://www.jiosaavn.com/api.php?__call=playlist.getDetails&_format=json&cc=in&_marker=0%3F_marker%3D0&listid={id}")
 
         songs_json = res.text.encode().decode('unicode-escape')
@@ -56,3 +54,4 @@ def fetch_trending():
 
 
 
+print(fetch_trending)
