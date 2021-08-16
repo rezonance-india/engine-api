@@ -10,8 +10,8 @@ def track_url_encoder(url_id: str, url_pin: str) -> str:
     cdn_list = secret.cdn_list
     cdn = secrets.choice(cdn_list)
     BASE_URL = secret.BASE_URL
-    BITRATE = "160"
-    track_url = f"http://{cdn}.{BASE_URL}/{url_pin}/{url_id}_{BITRATE}.mp4"
+    BITRATE = "96"
+    track_url = f"https://{cdn}.{BASE_URL}/{url_pin}/{url_id}_{BITRATE}.mp4"
 
     return track_url
 
@@ -87,7 +87,9 @@ def recommend_pop(query):
     
     sim = np.load("src/database/pop-light.npy")
     recoms_list = sim[query, :]
+    print(recoms_list)
     for i in recoms_list:
+        print(i)
         idx = 'pop' + str(int(i))
         cur.execute("""
                     SELECT ref_id, track_name, a.album_name, art.artist_name, a.album_img, url_id, url_pin

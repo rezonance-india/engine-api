@@ -32,7 +32,7 @@ def fetch_trending():
             
             song_id = song_prev_url.split('/')[3]
             song_url = song_prev_url.split('/')[4].split('_')[0]
-            url = f"http://{secret.cdn_list[0]}.{secret.BASE_URL}/{song_id}/{song_url}_96.mp4"
+            url = f"https://{secret.cdn_list[0]}.{secret.BASE_URL}/{song_id}/{song_url}_96.mp4"
 
             img_url = item['image']
             img_suffix = "500x500.jpg"

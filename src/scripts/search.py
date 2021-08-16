@@ -12,8 +12,8 @@ def track_url_encoder(url_id: str, url_pin: str) -> str:
     cdn_list = secret.cdn_list
     cdn = secrets.choice(cdn_list)
     BASE_URL = secret.BASE_URL
-    BITRATE = "160"
-    track_url = f"http://{cdn}.{BASE_URL}/{url_pin}/{url_id}_{BITRATE}.mp4"
+    BITRATE = "96"
+    track_url = f"https://{cdn}.{BASE_URL}/{url_pin}/{url_id}_{BITRATE}.mp4"
 
     return track_url
 
@@ -39,7 +39,6 @@ def search_tracks(param):
             cur.execute(spellfix_query, (term,))
             r = cur.fetchone()
             correctedquery.append(r[0] if r is not None else term)  # correct the word if any match in the spellfix table; if no match, keep the word spelled as it is (then the search will give no result!)
-        
         correctedquery = ' '.join(correctedquery)
         correctedquery += '*'
         cur.execute(
