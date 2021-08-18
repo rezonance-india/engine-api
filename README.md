@@ -72,6 +72,9 @@ These are the features that we currently provide.
 
 :sparkles: New Releases
 
+:mag: Auto Complete & Auto Correct Search
+
+
 <br />
 
 ## AI Powered Recommendations
