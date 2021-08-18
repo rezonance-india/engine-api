@@ -4,27 +4,26 @@
 [![forthebadge](https://forthebadge.com/images/badges/for-you.svg)](https://forthebadge.com)
 [![forthebadge](https://forthebadge.com/images/badges/made-with-python.svg)](https://forthebadge.com)
 [![forthebadge](https://img.shields.io/github/workflow/status/kg-kartik/ga-test/Node.js%20CI?style=for-the-badge)](https://forthebadge.com)
+
 </p>
 
 <!-- PROJECT LOGO -->
 <br/>
 <p align="center">
-  <a href="https://github.com/radioactive11/AQUA">
+  <a href="https://rezonanceindia.tech/">
     <img src="STATIC/rezonance-logo-blue-sq.png" alt="Logo" width="120" height="120">
-
-    
   </a>
 
   <h1 align="center">rezonance</h1>
   <p align="center">
     <img src="STATIC/header.png" alt="Logo" >
-    <br />
+    <!-- <br /> -->
     <strong>Rezonance API</strong>
+    <!-- <br /> -->
+    <a href="https://rezonanceindia.tech/"><strong>Visit the website »</strong></a>
     <br />
-    <a href="http://rezonanceindia.tech/"><strong>Visit the website »</strong></a>
     <br />
-    <br />
-    <a href="http://rezonanceindia.tech/">View Demo</a>
+    <a href="https://rezonanceindia.tech/">View Demo</a>
     ·
     <a href="https://github.com/rezonance-india/engine-api/issues">Report Bug</a>
     ·
@@ -69,22 +68,21 @@ These are the features that we currently provide.
 
 :space_invader: Ad Free
 
+:page_facing_up: No subscription
 
+:sparkles: New Releases
 
 <br />
-
 
 ## AI Powered Recommendations
 Discover new music based on the song you're currently listening to.
 
 We used content based recommendations to find music similar to the one chosen by the user based on cosine similarity of metrics of songs.
 
-
 <br />
 
 ## In App Sharing
 Users can share songs with their friends within the application. No need to copy links or send screenshots
-
 
 <br />
 
@@ -95,7 +93,6 @@ Listen to your favourite songs even without an internet connection. Download son
 
 ## Ad Free
 Enjoy ad-free seamless playback. Cuz even we don't like ads
-
 
 <br />
 <br />
@@ -236,20 +233,3 @@ Kartik Goel - [GitHub](https://github.com/kg-kartik) - goel.kartik39@gmail.com
 <img src = "https://imgs.xkcd.com/comics/music_drm.png">
 
 
-<!-- MARKDOWN LINKS & IMAGES -->
-<!-- https://www.markdownguide.org/basic-syntax/#reference-style-links -->
-[contributors-shield]: https://img.shields.io/github/contributors/radiaoctive11/HealthBridge.svg?style=flat-square
-[contributors-url]: https://github.com/radioactive11/AQUA/graphs/contributors
-[forks-shield]: https://img.shields.io/github/forks/radiaoctive11/HealthBridge.svg?style=flat-square
-[forks-url]: https://github.com/radioactive11/AQUA/network/members
-[stars-shield]: https://img.shields.io/github/stars/radiaoctive11/HealthBridge.svg?style=flat-square
-[stars-url]: https://github.com/radioactive11/AQUA/stargazers
-[issues-shield]: https://img.shields.io/github/issues/radiaoctive11/HealthBridge.svg?style=flat-square
-[issues-url]: https://github.com/radioactive11/AQUA/issues
-[license-shield]: https://img.shields.io/github/license/radiaoctive11/HealthBridge.svg?style=flat-square
-[license-url]: https://github.com/radioactive11/AQUA/blob/master/LICENSE.txt
-[linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=flat-square&logo=linkedin&colorB=555
-[linkedin-url]: https://linkedin.com/in/othneildrew
-[product-screenshot]: STATIC/Landing.png
-
-[node-js]: "https://img.shields.io/badge/-JavaScript-F7DF1E?style=flat-square&logo=javascript&logoColor=black"
