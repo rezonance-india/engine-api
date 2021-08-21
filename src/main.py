@@ -1,6 +1,6 @@
 from logging import debug
 from typing import Optional
-from fastapi import FastAPI, Header, Request
+from fastapi import FastAPI, Header, Request, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel
 
@@ -66,6 +66,10 @@ class RecommendResource(BaseModel):
 @app.post("/recommend")
 def _recommendaton(request_body: RecommendResource) -> list:
     ref_id = request_body.ref_id    
+    genre = ref_id[:3]
+    valid_genres = {"pop", "roc", "edm", "rap", "ind"}
+    if genre not in valid_genres:
+        raise HTTPException(status_code=406, detail="invalid ref_id")
     results = recommend.get_recoms(ref_id)
     
     return results
