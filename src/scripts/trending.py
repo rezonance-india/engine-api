@@ -14,7 +14,7 @@ def fetch_trending():
         return json_data
 
     else:
-        res = requests.get("https://www.jiosaavn.com/featured/international_charts/DjLfyo0wfbk_").text
+        res = requests.get("https://www.jiosaavn.com/featured/now-trending---english/pm49jiq,CNs_").text
         id = res.split('"type":"playlist","id":"')[1].split('"')[0]
         res = requests.get(f"https://www.jiosaavn.com/api.php?__call=playlist.getDetails&_format=json&cc=in&_marker=0%3F_marker%3D0&listid={id}")
 
