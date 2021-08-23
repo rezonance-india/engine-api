@@ -5,6 +5,7 @@
 [![forthebadge](https://forthebadge.com/images/badges/made-with-python.svg)](https://forthebadge.com)
 [![forthebadge](https://img.shields.io/github/workflow/status/kg-kartik/ga-test/Node.js%20CI?style=for-the-badge)](https://forthebadge.com)
 
+
 </p>
 
 <!-- PROJECT LOGO -->
@@ -55,7 +56,7 @@
 
 <!-- ABOUT THE PROJECT -->
 ## About The Project
-rezonance is a music streaming application which fetches music from free sources available on the internet. It is completly free and open-source. 
+rezonance is a music streaming application that fetches music from free sources available on the internet. It is completely free and open-source. 
 
 These are the features that we currently provide. 
 <br/>
